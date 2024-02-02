@@ -2,6 +2,8 @@ package com.Student.Studentmangement.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
@@ -13,10 +15,13 @@ import jakarta.persistence.Table;
 public class ScoreEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
 	@OneToOne
-	@JoinColumn(name = "studentId", referencedColumnName = "emp_id")
+	@JoinColumn(name = "id", referencedColumnName = "student_id")
 	@MapsId
-	private StudentEntity student;
+	private StudentEntity studentEntity;
 
 	@Column(name = "firstYear")
 	private int firstYear;

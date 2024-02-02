@@ -15,9 +15,11 @@ public class StudentEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-	@Column(name = "emp_id")
+	@Column(name = "student_id")
 	private Long id;
+
+	@OneToOne(mappedBy = "studentEntity", cascade = CascadeType.PERSIST, orphanRemoval = true)
+	private ScoreEntity scoreEntity;
 
 	@Column(name = "name")
 	private String name;
@@ -30,10 +32,6 @@ public class StudentEntity {
 
 	@Column(name = "address")
 	private String address;
-
-	//creating a one to one relation
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "student")
-	private ScoreEntity score;
 
 	public StudentEntity() {
 
