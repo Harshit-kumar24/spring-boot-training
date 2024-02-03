@@ -6,74 +6,63 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "score")
+@Table(name = "score_info")
 public class ScoreEntity {
 
+	//unique id
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
-	@JoinColumn(name = "id", referencedColumnName = "student_id")
-	@MapsId
+	//reference
+	@ManyToOne
+	@JoinColumn(name = "student_id")
 	private StudentEntity studentEntity;
 
-	@Column(name = "firstYear")
-	private int firstYear;
+	@Column(name = "year")
+	private int year;
 
-	@Column(name = "secondYear")
-	private int secondYear;
-
-	@Column(name = "thirdYear")
-	private int thirdYear;
-
-	@Column(name = "fourthYear")
-	private int fourthYear;
+	@Column(name = "score")
+	private double score;
 
 	//constructor
-	public ScoreEntity(int firstYear, int secondYear, int thirdYear, int fourthYear) {
-		this.firstYear = firstYear;
-		this.secondYear = secondYear;
-		this.thirdYear = thirdYear;
-		this.fourthYear = fourthYear;
+	public ScoreEntity() {
+
+	}
+
+	public ScoreEntity(Long id, int year, double score) {
+		this.id = id;
+		this.year = year;
+		this.score = score;
 	}
 
 	//getters and setters
-	public int getFirstYear() {
-		return firstYear;
+	public Long getId() {
+		return id;
 	}
 
-	public void setFirstYear(int firstYear) {
-		this.firstYear = firstYear;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public int getSecondYear() {
-		return secondYear;
+	public int getYear() {
+		return year;
 	}
 
-	public void setSecondYear(int secondYear) {
-		this.secondYear = secondYear;
+	public void setYear(int year) {
+		this.year = year;
 	}
 
-	public int getThirdYear() {
-		return thirdYear;
+	public double getScore() {
+		return score;
 	}
 
-	public void setThirdYear(int thirdYear) {
-		this.thirdYear = thirdYear;
-	}
-
-	public int getFourthYear() {
-		return fourthYear;
-	}
-
-	public void setFourthYear(int fourthYear) {
-		this.fourthYear = fourthYear;
+	public void setScore(double score) {
+		this.score = score;
 	}
 
 }

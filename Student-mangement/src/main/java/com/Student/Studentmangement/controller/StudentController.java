@@ -39,6 +39,7 @@ public class StudentController {
 	//post requests
 	@PostMapping
 	public StudentEntity saveStudent(@RequestBody StudentEntity studentEntity) {
+
 		return studentService.saveStudent(studentEntity);
 	}
 

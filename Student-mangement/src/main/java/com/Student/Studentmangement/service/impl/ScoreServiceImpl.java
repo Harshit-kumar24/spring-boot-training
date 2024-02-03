@@ -1,13 +1,14 @@
 package com.Student.Studentmangement.service.impl;
 
 import java.util.List;
-import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 import com.Student.Studentmangement.Entity.ScoreEntity;
-import com.Student.Studentmangement.Entity.StudentEntity;
 import com.Student.Studentmangement.repository.ScoreRepository;
 import com.Student.Studentmangement.service.ScoreService;
 
+@Service
 public class ScoreServiceImpl implements ScoreService {
 
 	private final ScoreRepository scoreRepository;
@@ -16,28 +17,28 @@ public class ScoreServiceImpl implements ScoreService {
 		this.scoreRepository = scoreRepository;
 	}
 
-	//get
+	//GET
 	@Override
 	public List<ScoreEntity> findAllScore() {
 		return scoreRepository.findAll();
 	}
 
 	@Override
-	public Optional<ScoreEntity> findById(StudentEntity id) {
-		return scoreRepository.findById(id);
+	public List<ScoreEntity> findByKey(Long key) {
+		return scoreRepository.findByKey(key);
 	}
 
-	//post
+	//POST
 	@Override
 	public ScoreEntity saveScore(ScoreEntity scoreEntity) {
 		return scoreRepository.save(scoreEntity);
 	}
 
-	//delete
+	//DELETE
 	@Override
-	public void deleteScore(StudentEntity id) {
+	public void deleteScore(Long id) {
 		scoreRepository.deleteById(id);
-
+		;
 	}
 
 }
